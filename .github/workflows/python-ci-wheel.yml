@@ -26,7 +26,7 @@ jobs:
       matrix:
         os: [macos-13]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-        architecture: [x86, x64]
+        architecture: [x86, x64, arm64]
         include:
           - os: macos-13
             architecture: x64
@@ -74,7 +74,6 @@ jobs:
         with:
           output-dir: wheelhouse
         env:
-          CIBW_SKIP: cp37-macosx_arm64
           CIBW_BUILD: ${{ env.CIBW_BUILD_IDENTIFIER }}
           CIBW_ARCHS_MACOS: x86_64 arm64
           CIBW_ENVIRONMENT_MACOS:
