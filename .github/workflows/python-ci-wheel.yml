@@ -36,6 +36,8 @@ jobs:
             platform_id: macosx
         exclude:
           - os: macos-13
+            architecture: arm64
+          - os: macos-13
             architecture: x86
           - os: macos-14
             architecture: x86
