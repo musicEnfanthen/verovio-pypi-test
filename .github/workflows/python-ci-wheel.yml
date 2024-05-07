@@ -67,9 +67,11 @@ jobs:
         run: |
           # Set correct arch needed for cibuildwheel
           arch=${{ matrix.architecture }}
-          if [ $arch -eq 'x64']
+          if [[ $arch == 'x64' ]]
           then
             arch='x86_64'
+          else
+            echo 'Got architecture other than x64'
           fi
           # Remove dot from python-version for CIBW and prefix with cp
           id=cp$(echo ${{ matrix.python-version }} | sed -e 's/\.//g')-${{ matrix.platform_id }}_$arch
