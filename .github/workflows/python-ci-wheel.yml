@@ -30,10 +30,10 @@ jobs:
         include:
           - os: macos-13
             architecture: x64
-            platform_id: macosx_*
+            platform_id: macosx
           - os: macos-13
             architecture: arm64
-            platform_id: macosx_*
+            platform_id: macosx
         exclude:
           - os: macos-13
             architecture: x86
@@ -66,7 +66,7 @@ jobs:
         shell: bash
         run: |
           # Remove dot from python-version for CIBW and prefix with cp
-          id=cp$(echo ${{ matrix.python-version }} | sed -e 's/\.//g')-${{ matrix.platform_id }}
+          id=cp$(echo ${{ matrix.python-version }} | sed -e 's/\.//g')-${{ matrix.platform_id }}_${{ matrix.architecture }}
           echo CIBW_BUILD_IDENTIFIER=$id >> $GITHUB_ENV
           echo $id
 
