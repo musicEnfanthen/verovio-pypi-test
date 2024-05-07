@@ -4,6 +4,7 @@ on:
   push:
     # Trigger the workflow on push, but only for the develop-pypi and master branch
     branches: [develop-pypi, master]
+  workflow_dispatch:
 
 # globals
 env:
