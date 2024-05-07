@@ -65,8 +65,14 @@ jobs:
       - name: Set CIBW_BUILD_IDENTIFIER
         shell: bash
         run: |
+          # Set correct arch needed for cibuildwheel
+          arch=${{ matrix.architecture }}
+          if [ $arch -eq 'x64']
+          then
+            arch='x86_64'
+          fi
           # Remove dot from python-version for CIBW and prefix with cp
-          id=cp$(echo ${{ matrix.python-version }} | sed -e 's/\.//g')-${{ matrix.platform_id }}_${{ matrix.architecture }}
+          id=cp$(echo ${{ matrix.python-version }} | sed -e 's/\.//g')-${{ matrix.platform_id }}_$arch
           echo CIBW_BUILD_IDENTIFIER=$id >> $GITHUB_ENV
           echo $id
 
